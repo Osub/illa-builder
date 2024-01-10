@@ -8,6 +8,14 @@ interface SignInRequestBody {
   email: string
   password: string
 }
+
+interface SignUpRequestBody {
+  nickname: string
+  email: string
+  password: string
+  verificationCode: string
+}
+
 export const fetchSignIn = (data?: SignInRequestBody) => {
   return notNeedAuthCloudRequest<CurrentUserInfo>({
     url: "/auth/signin",
@@ -23,5 +31,13 @@ export const fetchLogout = async (token: string) => {
     headers: {
       Authorization: token,
     },
+  })
+}
+
+export const fetchSignUp = (data?: SignUpRequestBody) => {
+  return notNeedAuthCloudRequest<CurrentUserInfo>({
+    url: "/auth/signup",
+    method: "POST",
+    data,
   })
 }
