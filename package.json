@@ -51,7 +51,8 @@
       "react": "$react",
       "react-dom": "$react-dom",
       "@types/react": "$@types/react",
-      "@types/react-dom": "$@types/react-dom"
+      "@types/react-dom": "$@types/react-dom",
+      "react-error-overlay": "6.0.9"
     }
   }
 }

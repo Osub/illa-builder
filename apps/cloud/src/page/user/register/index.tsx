@@ -1,7 +1,6 @@
 import { ERROR_FLAG, isILLAAPiError } from "@illa-public/illa-net"
 import { RegisterPage } from "@illa-public/sso-module"
 import { RegisterFields } from "@illa-public/sso-module/RegisterPage/interface"
-import { setAuthToken } from "@illa-public/utils"
 import { FC, useState } from "react"
 import { SubmitHandler } from "react-hook-form"
 import { useTranslation } from "react-i18next"
@@ -20,7 +19,11 @@ const UserRegister: FC = () => {
     email: "",
     password: "",
     nickname: "",
+    verificationCode: "",
+    isSubscribed: "",
   })
+
+  const sendEmail = async () => {}
 
   const message = useMessage()
   const [searchParams] = useSearchParams()
@@ -28,7 +31,7 @@ const UserRegister: FC = () => {
   const onSubmit: SubmitHandler<RegisterFields> = async (data) => {
     setLoading(true)
     try {
-      const response = await fetchSignUp(data)
+      await fetchSignUp(data)
 
       message.success({
         content: t("page.user.sign_up.tips.success"),
@@ -77,7 +80,14 @@ const UserRegister: FC = () => {
     }
   }
 
-  return <RegisterPage loading={loading} errorMsg={errorMsg} onSubmit={onSubmit} />
+  return (
+    <RegisterPage
+      sendEmail={sendEmail}
+      loading={loading}
+      errorMsg={errorMsg}
+      onSubmit={onSubmit}
+    />
+  )
 }
 
 export default UserRegister
