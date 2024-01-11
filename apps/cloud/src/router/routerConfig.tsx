@@ -23,7 +23,7 @@ const PasswordSettingPage = lazy(
   () => import("@/page/setting/account/password"),
 )
 const LoginPage = lazy(() => import("@/page/user/login"))
-const RegisterPage = lazy(() => import("@/page/user/login"))
+const RegisterPage = lazy(() => import("@/page/user/register"))
 
 export const routerConfig: ILLARoutesObject[] = [
   {
@@ -41,9 +41,9 @@ export const routerConfig: ILLARoutesObject[] = [
   {
     path: "/register",
     element: (
-        <Suspense fallback={<FullPageLoading />}>
-          <RegisterPage />
-        </Suspense>
+      <Suspense fallback={<FullPageLoading />}>
+        <RegisterPage />
+      </Suspense>
     ),
   },
   {

@@ -23,7 +23,9 @@ const UserRegister: FC = () => {
     isSubscribed: "",
   })
 
-  const sendEmail = async () => {}
+  const sendEmail = async () => {
+    console.log(123)
+  }
 
   const message = useMessage()
   const [searchParams] = useSearchParams()
