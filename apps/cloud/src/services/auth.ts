@@ -10,10 +10,12 @@ interface SignInRequestBody {
 }
 
 interface SignUpRequestBody {
+  inviteToken: any
   nickname: string
   email: string
   password: string
-  verificationCode: string
+  verificationToken: string
+  language: any
 }
 
 export const fetchSignIn = (data?: SignInRequestBody) => {

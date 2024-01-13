@@ -59,7 +59,6 @@ export const PCDashBoardLayout: FC<WorkspaceLayoutProps> = ({
       teamIdentifier
     ) {
       guideOpened.current = true
-
       modal.show({
         id: "openGuide",
         title: t("tutorial.modal.tutorial.first_time.title"),

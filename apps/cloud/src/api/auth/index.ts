@@ -1,9 +1,35 @@
-import { authCloudRequest } from "@illa-public/illa-net"
+import {
+  authCloudRequest,
+  notNeedAuthCloudRequest,
+} from "@illa-public/illa-net"
 import { v4 } from "uuid"
 import { upload } from "@/api/custom"
+import { ILLACloudStorage } from "@/utils/storage"
 
 export interface UploadResponse {
   uploadAddress: string
+}
+
+export const fetchSendVerificationCodeToEmail = async (
+  email: string,
+  usage: "signup" | "forgetpwd",
+) => {
+  try {
+    const res = await notNeedAuthCloudRequest<{ verificationToken: string }>({
+      method: "POST",
+      url: "/auth/verification",
+      data: {
+        email,
+        usage,
+      },
+    })
+
+    const verificationToken = res?.data?.verificationToken
+    ILLACloudStorage.setSessionStorage("verificationToken", verificationToken)
+    return verificationToken
+  } catch (e) {
+    throw e
+  }
 }
 
 export const getUserAvatarUploadAddress = async (type: string) => {
