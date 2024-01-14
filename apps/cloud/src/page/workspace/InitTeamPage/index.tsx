@@ -9,7 +9,7 @@ const InitTeamPage: FC = () => {
   return currentTeamInfo ? (
     <Navigate to={`/workspace/${currentTeamInfo.identifier}/apps`} />
   ) : (
-    <Navigate to={`/login`} />
+    <Navigate to={`/404`} />
   )
 }
 

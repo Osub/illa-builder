@@ -112,7 +112,8 @@ export const fixedWsURL = (wsURL: string) => {
     const wsPREFIX = `${wsProtocol}${
       new URL(HTTP_REQUEST_PUBLIC_BASE_URL).host
     }`
-    wsURL = `${wsPREFIX}${wsURL}`
+    console.log(wsPREFIX)
+    wsURL = `ws://localhost:8002${wsURL}`
   }
   return wsURL
 }

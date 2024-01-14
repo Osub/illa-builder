@@ -276,6 +276,11 @@ import {
   AVATAR_WIDGET_CONFIG,
 } from "./AvatarWidget"
 import {
+  CONNECT_WALLET_EVENT_HANDLER_CONFIG,
+  CONNECT_WALLET_PANEL_CONFIG,
+  CONNECT_WALLET_WIDGET_CONFIG,
+} from "./ConncetWalletWidget"
+import {
   GRID_LIST_EVENT_HANDLER_CONFIG,
   GRID_LIST_PANEL_CONFIG,
   GRID_LIST_WIDGET_CONFIG,
@@ -292,6 +297,15 @@ export const WidgetConfigMap: Record<
     widget: LazyExoticComponent<FC<any>>
   }
 > = {
+  // web3
+  CONNECT_WALLET_WIDGET: {
+    config: CONNECT_WALLET_WIDGET_CONFIG,
+    panelConfig: CONNECT_WALLET_PANEL_CONFIG,
+    eventHandlerConfig: CONNECT_WALLET_EVENT_HANDLER_CONFIG,
+    widget: lazy(
+      () => import("@/widgetLibrary/ConncetWalletWidget/connectWallet"),
+    ),
+  },
   // inputs
   INPUT_WIDGET: {
     config: INPUT_WIDGET_CONFIG,

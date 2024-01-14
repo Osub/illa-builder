@@ -16,6 +16,7 @@ export const DEPRECATED_WIDGETS = ["CHART", "TABLE_WIDGET"]
 export type SessionType = keyof typeof sessionTypeMapSessionNameKey
 
 export const sessionTypeMapSessionNameKey = {
+  WEB3: i18n.t("editor.widget_picker.sessions.web3"),
   COMMON: i18n.t("editor.widget_picker.sessions.commonly"),
   INPUTS: i18n.t("editor.widget_picker.sessions.inputs"),
   SELECT: i18n.t("editor.widget_picker.sessions.selects"),
@@ -48,6 +49,7 @@ const getListItemConfig = (type: WidgetType): WidgetConfig => {
 
 const translateChildren = (componentConfigs: WidgetConfig[]) => {
   const sessionConfigs: TypeMapComponent = {
+    WEB3: [],
     COMMON: [],
     INPUTS: [],
     ILLA_DRIVE: [],
