@@ -108,13 +108,12 @@ export const fixedWsURL = (wsURL: string) => {
     : new URL(HTTP_REQUEST_PUBLIC_BASE_URL).protocol
   const wsProtocol = protocol === "https:" ? "wss://" : "ws://"
 
-  if (!isCloudVersion) {
-    const wsPREFIX = `${wsProtocol}${
-      new URL(HTTP_REQUEST_PUBLIC_BASE_URL).host
-    }`
-    console.log(wsPREFIX)
-    wsURL = `ws://localhost:8002${wsURL}`
-  }
+  const wsPREFIX = `${wsProtocol}${new URL(HTTP_REQUEST_PUBLIC_BASE_URL).host}`
+  // wsURL = `${wsPREFIX}${wsURL}`
+  console.log(`${wsPREFIX}${wsURL}`)
+  const uri = wsURL.replace("/builder-ws/", "")
+  wsURL = `ws://192.168.1.2:8002/${uri}`
+
   return wsURL
 }
 

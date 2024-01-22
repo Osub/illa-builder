@@ -17,7 +17,7 @@ import { InvalidMessage } from "@/widgetLibrary/PublicSector/InvalidMessage"
 import { TooltipWrapper } from "@/widgetLibrary/PublicSector/TooltipWrapper"
 import { applyValidateMessageWrapperStyle } from "@/widgetLibrary/PublicSector/TransformWidgetWrapper/style"
 import { uploadLayoutStyle } from "@/widgetLibrary/UploadWidget/style"
-import { UploadWidgetProps, WrappedUploadProps } from "./interface"
+import { UploadWidgetProps } from "./interface"
 
 const config = createConfig({
   chains: [mainnet, polygon],
@@ -31,12 +31,12 @@ const config = createConfig({
     }),
     walletConnect({
       showQrModal: false,
-      projectId: "",
+      projectId: "8a713f1441b34f259026aca1736403d0",
     }),
   ],
 })
 
-export const WrappedConnectWallet: FC<WrappedUploadProps> = (props) => {
+export const WrappedConnectWallet: FC = (props) => {
   const {
     // selectionType,
     // type,
@@ -106,7 +106,7 @@ export const ConnectWalletWidget: FC<UploadWidgetProps> = (props) => {
     >
       <TooltipWrapper tooltipText={tooltipText} tooltipDisabled={!tooltipText}>
         <div css={uploadLayoutStyle}>
-          <WrappedConnectWallet {...props} />
+          <WrappedConnectWallet />
         </div>
       </TooltipWrapper>
       <div css={applyValidateMessageWrapperStyle(0, "left", true)}>

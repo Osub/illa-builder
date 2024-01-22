@@ -83,6 +83,8 @@ export const getTeamsInfoLoader: LoaderFunction = async (args) => {
   const currentTeamInfo = teamsInfo.find(
     (item) => item.identifier === teamIdentifier,
   )
+  console.log(response)
+  console.log(currentTeamInfo)
   if (currentTeamInfo) {
     store.dispatch(teamActions.updateCurrentIdReducer(currentTeamInfo.id))
     store.dispatch(teamActions.updateTeamItemsReducer(teamsInfo))
@@ -92,7 +94,7 @@ export const getTeamsInfoLoader: LoaderFunction = async (args) => {
       !canAccessManage(
         currentTeamInfo.myRole,
         getPlanUtils(currentTeamInfo),
-        currentTeamInfo.totalTeamLicense.teamLicenseAllPaid,
+        currentTeamInfo.totalTeamLicense?.teamLicenseAllPaid,
       )
     ) {
       return redirect(

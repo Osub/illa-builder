@@ -8,6 +8,7 @@ import { Status500 } from "@/page/status/500"
 import { ILLARoutesObject } from "@/router/interface"
 import { SettingLazyLoad } from "@/router/lazyLoad/SettingLazyLoad"
 import { rootLoader } from "./loader/rootLoader"
+import { teamMemberLoader } from "./loader/teamMemberLoader"
 
 const WorkSpaceLanding = lazy(() => import("@/page/workspace"))
 const InitWorkSpaceLanding = lazy(() => import("@/page/workspace/InitTeamPage"))
@@ -15,6 +16,8 @@ const AppWorkSpaceLanding = lazy(() => import("@/page/workspace/apps"))
 const ResourceWorkSpaceLanding = lazy(
   () => import("@/page/workspace/resources"),
 )
+
+const WithReportMember = lazy(() => import("@/page/member"))
 
 const SettingLanding = lazy(() => import("@/page/setting/landing"))
 const PersonalSetting = lazy(() => import("@/page/setting/account/personal"))
@@ -24,6 +27,8 @@ const PasswordSettingPage = lazy(
 )
 const LoginPage = lazy(() => import("@/page/user/login"))
 const RegisterPage = lazy(() => import("@/page/user/register"))
+
+const TeamMembers = lazy(() => import("@/page/setting/team/member"))
 
 export const routerConfig: ILLARoutesObject[] = [
   {
@@ -68,6 +73,10 @@ export const routerConfig: ILLARoutesObject[] = [
             element: <Navigate to="./apps" replace />,
           },
           {
+            path: "members",
+            element: <WithReportMember />,
+          },
+          {
             path: "apps",
             element: <AppWorkSpaceLanding />,
           },
@@ -100,6 +109,16 @@ export const routerConfig: ILLARoutesObject[] = [
       {
         path: "password",
         element: <PasswordSettingPage />,
+      },
+      {
+        path: ":teamIdentifier",
+        children: [
+          {
+            path: "members",
+            element: <TeamMembers />,
+            loader: teamMemberLoader,
+          },
+        ] as ILLARoutesObject[],
       },
     ] as ILLARoutesObject[],
   },

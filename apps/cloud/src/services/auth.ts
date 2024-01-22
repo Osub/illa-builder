@@ -43,3 +43,18 @@ export const fetchSignUp = (data?: SignUpRequestBody) => {
     data,
   })
 }
+
+interface forgetPasswordRequestBody {
+  email: string
+  verificationToken: string
+  newPassword: string
+}
+export const fetchUpdatePasswordFromForgot = (
+  data: forgetPasswordRequestBody,
+) => {
+  return authCloudRequest({
+    method: "POST",
+    url: "/auth/forgetPassword",
+    data,
+  })
+}

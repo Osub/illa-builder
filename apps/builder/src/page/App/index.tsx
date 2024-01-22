@@ -220,7 +220,7 @@ export const Editor: FC = () => {
                 </TriggerProvider>
               )}
             </div>
-            {isOnline && (
+            {!isOnline && (
               <div css={modalStyle} onMouseDown={handleMouseDownOnModal}>
                 <motion.div css={messageWrapperStyle} animate={controls}>
                   <WarningCircleIcon css={waringIconStyle} />

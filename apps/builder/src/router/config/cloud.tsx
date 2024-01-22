@@ -43,6 +43,19 @@ export const cloudRouter: RoutesObjectPro[] = [
     ),
     loader: agentLoader,
   },
+  // {
+  //   path: "/:teamIdentifier/dashboard",
+  //   element: lazyLoad(lazy(() => import("@/page/Dashboard"))),
+  //   children: [
+  //     ...publicDashboardChildrenRouter,
+  //     {
+  //       path: "members",
+  //       element: <Member />,
+  //       needLogin: true,
+  //       loader: teamMemberLoader,
+  //     },
+  //   ],
+  // },
   ...publicTeamChildrenRouter,
   ...publicRouterConfig,
 ]

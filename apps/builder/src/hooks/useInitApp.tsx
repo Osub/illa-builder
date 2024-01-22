@@ -1,5 +1,5 @@
 import { getCurrentTeamInfo } from "@illa-public/user-data"
-import { isCloudVersion } from "@illa-public/utils"
+// import { isCloudVersion } from "@illa-public/utils"
 import { useCallback, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
@@ -15,12 +15,12 @@ import { componentsActions } from "@/redux/currentApp/components/componentsSlice
 import { executionActions } from "@/redux/currentApp/executionTree/executionSlice"
 // import { dashboardTeamAIAgentActions } from "@/redux/dashboard/teamAIAgents/dashboardTeamAIAgentSlice"
 import { resourceActions } from "@/redux/resource/resourceSlice"
-import { fetchTeamAgent } from "@/services/agent"
+// import { fetchTeamAgent } from "@/services/agent"
 import { fetchPrivateAppInitData } from "@/services/apps"
 import { fetchResources } from "@/services/resource"
 import store from "@/store"
 import { DisplayNameGenerator } from "@/utils/generators/generateDisplayName"
-import { aiAgentActions } from "../redux/aiAgent/dashboardTeamAIAgentSlice"
+// import { aiAgentActions } from "../redux/aiAgent/dashboardTeamAIAgentSlice"
 import { flatTreeToMap } from "../utils/componentNode/flatTree"
 import { fixedActionToNewAction } from "./utils/fixedAction"
 import { fixedComponentsToNewComponents } from "./utils/fixedComponents"
@@ -81,43 +81,43 @@ export const useInitBuilderApp = (mode: IllaMode) => {
     if (isOnline) {
       setErrorState(false)
       setLoadingState(true)
-      if (isCloudVersion) {
-        Promise.all([
-          fetchPrivateAppInitData(appId, version, controller.signal),
-          fetchResources(controller.signal),
-          fetchTeamAgent(controller.signal),
-        ])
-          .then((res) => {
-            dispatch(resourceActions.updateResourceListReducer(res[1].data))
-            handleCurrentApp(res[0].data)
-            dispatch(
-              aiAgentActions.updateTeamAIAgentListReducer(
-                res[2].data.aiAgentList,
-              ),
-            )
-          })
-          .catch(() => {
-            setErrorState(true)
-          })
-          .finally(() => {
-            setLoadingState(false)
-          })
-      } else {
-        Promise.all([
-          fetchPrivateAppInitData(appId, version, controller.signal),
-          fetchResources(controller.signal),
-        ])
-          .then((res) => {
-            dispatch(resourceActions.updateResourceListReducer(res[1].data))
-            handleCurrentApp(res[0].data)
-          })
-          .catch(() => {
-            setErrorState(true)
-          })
-          .finally(() => {
-            setLoadingState(false)
-          })
-      }
+      // if (isCloudVersion) {
+      //   Promise.all([
+      //     fetchPrivateAppInitData(appId, version, controller.signal),
+      //     fetchResources(controller.signal),
+      //     fetchTeamAgent(controller.signal),
+      //   ])
+      //     .then((res) => {
+      //       dispatch(resourceActions.updateResourceListReducer(res[1].data))
+      //       handleCurrentApp(res[0].data)
+      //       dispatch(
+      //         aiAgentActions.updateTeamAIAgentListReducer(
+      //           res[2].data.aiAgentList,
+      //         ),
+      //       )
+      //     })
+      //     .catch(() => {
+      //       setErrorState(true)
+      //     })
+      //     .finally(() => {
+      //       setLoadingState(false)
+      //     })
+      // } else {
+      Promise.all([
+        fetchPrivateAppInitData(appId, version, controller.signal),
+        fetchResources(controller.signal),
+      ])
+        .then((res) => {
+          dispatch(resourceActions.updateResourceListReducer(res[1].data))
+          handleCurrentApp(res[0].data)
+        })
+        .catch(() => {
+          setErrorState(true)
+        })
+        .finally(() => {
+          setLoadingState(false)
+        })
+      // }
     }
 
     return () => {

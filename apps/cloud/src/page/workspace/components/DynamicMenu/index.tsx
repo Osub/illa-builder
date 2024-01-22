@@ -7,6 +7,7 @@ import { useSelector } from "react-redux"
 import { useLocation, useParams } from "react-router-dom"
 import ResourceIcon from "@/assets/icon/workspace/resource.svg?react"
 import AppIcon from "@/assets/icon/workspace/workspace.svg?react"
+import TeamIcon from "@/assets/page/setting/team.svg?react"
 import { DashBoardDynamicMenuProps } from "./interface"
 
 export const DashBoardDynamicMenu: FC<DashBoardDynamicMenuProps> = (props) => {
@@ -17,6 +18,15 @@ export const DashBoardDynamicMenu: FC<DashBoardDynamicMenuProps> = (props) => {
   const { t } = useTranslation()
 
   const dynamicMenuConfig: MenuItemShape[] = [
+    {
+      labelKey: "member",
+      labelName: t("page.workspace.menu.members"),
+      href: `/workspace/${teamIdentifier}/members`,
+      inStation: true,
+      icon: <TeamIcon />,
+      onClickCallback: onClickMenuItemCallback,
+      hidden: !teamIdentifier,
+    },
     {
       labelKey: "app",
       labelName: t("page.workspace.menu.apps"),

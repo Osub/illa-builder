@@ -620,6 +620,9 @@ importers:
       '@illa-public/styleis-plugin':
         specifier: workspace:*
         version: link:../../packages/illa-public-component/styleis-plugin
+      '@illa-public/upgrade-modal':
+        specifier: workspace:^
+        version: link:../../packages/illa-public-component/UpgradeModal
       '@illa-public/user-data':
         specifier: workspace:*
         version: link:../../packages/illa-public-component/UserData

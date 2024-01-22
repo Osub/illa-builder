@@ -13,6 +13,9 @@ RUN apk add --no-cache \
 #COPY illa-builder-frontend.conf /etc/nginx/conf.d/illa-builder-frontend.conf
 COPY ./apps/builder/dist/index.html /opt/illa/illa-builder-frontend/index.html
 COPY ./apps/builder/dist/assets /opt/illa/illa-builder-frontend/assets
+
+COPY ./apps/cloud/dist/index.html /opt/illa/illa-cloud-frontend/index.html
+COPY ./apps/cloud/dist/assets /opt/illa/illa-cloudss-frontend/assets
 #RUN rm /etc/nginx/conf.d/default.conf
 
 # test nginx
